@@ -22,7 +22,7 @@ Workflow {
         registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
         registerGeneratedEPackage = "org.eclipselabs.spray.styles.StylesPackage"
     }
-
+ 
     component = org.eclipse.xtext.ecore.EcoreSupport{}
 
 	component = org.eclipselabs.spray.xtext.util.ReaderExt {

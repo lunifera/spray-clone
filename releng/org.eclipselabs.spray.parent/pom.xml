@@ -13,7 +13,7 @@
 	<packaging>pom</packaging>
 
 	<properties>
-		<spray-ci-targetrepository>https://spray.ci.cloudbees.com/job/spray-ci-targetplatform-java8/lastSuccessfulBuild/artifact/releng/org.eclipselabs.spray.repository/target/repository/</spray-ci-targetrepository>
+		<!-- <spray-ci-targetrepository>https://spray.ci.cloudbees.com/job/spray-ci-targetplatform-java8/lastSuccessfulBuild/artifact/releng/org.eclipselabs.spray.repository/target/repository/</spray-ci-targetrepository> -->
 		<spray-local-targetrepository>file:../../releng/org.eclipselabs.spray.repository/target/repository</spray-local-targetrepository>
 		<project.encoding>UTF-8</project.encoding>
 		<file.encoding>${project.encoding}</file.encoding>
@@ -41,19 +41,20 @@
 		<build-helper-maven-plugin.version>1.8</build-helper-maven-plugin.version>
 		<eclipse-signing-maven-plugin.version>1.0.5</eclipse-signing-maven-plugin.version>
 		<exec-maven-plugin-version>1.2.1</exec-maven-plugin-version>
-		<xtend-maven-plugin-version>2.5.4-SNAPSHOT</xtend-maven-plugin-version>
-		<xtend-library-version>2.5.4-SNAPSHOT</xtend-library-version>
-		<xtext-version>2.5.4-SNAPSHOT</xtext-version>
+		<xtend-maven-plugin-version>2.5.4</xtend-maven-plugin-version>
+		<xtend-library-version>2.5.4</xtend-library-version>
+		<xtext-version>2.5.4</xtext-version>
 		<jacoco-maven-plugin.version>0.6.4.201312101107</jacoco-maven-plugin.version>
 		<junit-version>4.11</junit-version>
 		<local-build-platform.version>[3.9,4.4)</local-build-platform.version>
 		<skip.mwe2>true</skip.mwe2>
-		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M -XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
+		<memoryArgs>-Xms256M -Xmx1024M -XX:PermSize=256M -XX:MaxPermSize=256M
+			-XX:+HeapDumpOnOutOfMemoryError</memoryArgs>
 		<encodingArgs>-Dfile.encoding=${file.encoding}</encodingArgs>
 		<loggingArgs>-Dlog4j.configuration=file:${basedir}/../../releng/org.eclipselabs.spray.parent/log4j.xml</loggingArgs>
 		<java-compile-version>1.8</java-compile-version>
 		<cbi-jdt-repo.url>https://repo.eclipse.org/content/repositories/eclipse-staging/</cbi-jdt-repo.url>
-		<cbi-jdt-version>3.10.0.v20140316-0146</cbi-jdt-version>		
+		<cbi-jdt-version>3.10.0.v20140316-0146</cbi-jdt-version>
 		<ui.test.vmargs></ui.test.vmargs>
 		<coverageAgent></coverageAgent>
 		<it.coverage.argLine></it.coverage.argLine>
@@ -81,8 +82,9 @@
 						</configuration>
 					</execution>
 				</executions>
-			</plugin>		
-			<!-- By default clean xtend-gen if exists, the sources will be produced by xtend-plugin -->
+			</plugin>
+			<!-- By default clean xtend-gen if exists, the sources will be produced 
+				by xtend-plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-clean-plugin</artifactId>
@@ -140,11 +142,11 @@
 								<taskdef resource="net/sf/antcontrib/antcontrib.properties"
 									classpathref="maven.plugin.classpath" />
 								<if>
-									<isset property="coverageAgent"/>
+									<isset property="coverageAgent" />
 									<then>
 									</then>
 									<else>
-										<property name="coverageAgent" value=""/>
+										<property name="coverageAgent" value="" />
 									</else>
 								</if>
 							</target>
@@ -167,10 +169,10 @@
 					<dependency>
 						<groupId>org.apache.ant</groupId>
 						<artifactId>ant-nodeps</artifactId>
-						<version>${ant-nodeps.version}</version>                                   
+						<version>${ant-nodeps.version}</version>
 					</dependency>
 				</dependencies>
-			</plugin>			
+			</plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>tycho-maven-plugin</artifactId>
@@ -184,6 +186,13 @@
 				<configuration>
 					<resolver>p2</resolver>
 					<pomDependencies>consider</pomDependencies>
+					<target>
+						<artifact>
+							<groupId>org.eclipselabs.spray</groupId>
+							<artifactId>org.eclipselabs.spray.targetplatform</artifactId>
+							<version>0.5.1-SNAPSHOT</version>
+						</artifact>
+					</target>
 					<environments>
 						<environment>
 							<os>win32</os>
@@ -239,14 +248,9 @@
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-compiler-plugin</artifactId>
 					<version>${tycho-version}</version>
-					<!--configuration>
-						<encoding>${project.build.sourceEncoding}</encoding>
-						<meminitial>128m</meminitial>
-						<maxmem>1024m</maxmem>
-						<source>${java-compile-version}</source>
-						<target>${java-compile-version}</target>
-						<verbose>true</verbose>
-					</configuration-->
+					<!--configuration> <encoding>${project.build.sourceEncoding}</encoding> 
+						<meminitial>128m</meminitial> <maxmem>1024m</maxmem> <source>${java-compile-version}</source> 
+						<target>${java-compile-version}</target> <verbose>true</verbose> </configuration -->
 					<dependencies>
 						<dependency>
 							<groupId>org.eclipse.jdt</groupId>
@@ -265,7 +269,8 @@
 					</configuration>
 					<executions>
 						<execution>
-							<id>default-test</id><!-- can be seen in log: tycho-surefire-plugin:0.19.0:test (default-test) -->
+							<id>default-test</id><!-- can be seen in log: tycho-surefire-plugin:0.19.0:test 
+								(default-test) -->
 							<phase>none</phase>
 							<goals>
 								<goal>test</goal>
@@ -275,7 +280,9 @@
 							<id>TychoSurefirePluginTest</id>
 							<phase>test</phase>
 							<configuration>
-								<argLine>${encodingArgs} ${memoryArgs} ${ui.test.vmargs} ${coverageAgent} ${loggingArgs}</argLine><!-- different for mac/not mac -->
+								<argLine>${encodingArgs} ${memoryArgs} ${ui.test.vmargs}
+									${coverageAgent} ${loggingArgs}</argLine><!-- 
+									different for mac/not mac -->
 								<skip>${tycho.surefire.skipPluginTest}</skip>
 								<useUIHarness>false</useUIHarness>
 								<useUIThread>false</useUIThread>
@@ -296,10 +303,12 @@
 								<testFailureIgnore>true</testFailureIgnore>
 								<!-- 5 Minutes timeout -->
 								<forkedProcessTimeoutInSeconds>300</forkedProcessTimeoutInSeconds>
-								<!-- useUIHarness=true ensures the workbench is started before the tests are run. -->
+								<!-- useUIHarness=true ensures the workbench is started before the 
+									tests are run. -->
 								<useUIHarness>true</useUIHarness>
 								<useUIThread>true</useUIThread>
-								<argLine>${encodingArgs} ${memoryArgs} ${ui.test.vmargs} ${coverageAgent} ${loggingArgs}</argLine>
+								<argLine>${encodingArgs} ${memoryArgs} ${ui.test.vmargs}
+									${coverageAgent} ${loggingArgs}</argLine>
 								<product>org.eclipse.e4.ide.application.product</product>
 								<application>org.eclipse.ui.ide.workbench</application>
 								<dependencies>
@@ -368,7 +377,8 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${maven-surefire-plugin.version}</version>
 					<configuration>
-						<argLine>${memoryArgs} ${encodingArgs} ${coverageAgent} ${loggingArgs}</argLine>
+						<argLine>${memoryArgs} ${encodingArgs} ${coverageAgent}
+							${loggingArgs}</argLine>
 						<testSourceDirectory>${project.basedir}/src</testSourceDirectory>
 						<testClassesDirectory>${project.build.outputDirectory}</testClassesDirectory>
 						<failIfNoTests>false</failIfNoTests>
@@ -456,7 +466,7 @@
 						<excludeRoots>
 							<excludeRoot>src-gen</excludeRoot>
 							<excludeRoot>xtend-gen</excludeRoot>
-						</excludeRoots>							
+						</excludeRoots>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -518,6 +528,11 @@
 							<artifactId>org.eclipse.xtext.xbase</artifactId>
 							<version>${xtext-version}</version>
 						</dependency>
+						<dependency>
+							<groupId>antlr</groupId>
+							<artifactId>antlr</artifactId>
+							<version>2.7.6</version>
+						</dependency>
 					</dependencies>
 				</plugin>
 				<plugin>
@@ -549,7 +564,7 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	
+
 	<!-- to resolve this warning "[WARNING] Unable to locate Source XRef to 
 		link to - DISABLED". With this warning PMD validation will work fine. -->
 	<reporting>
@@ -560,7 +575,7 @@
 				<version>${maven-jxr-plugin.version}</version>
 			</plugin>
 		</plugins>
-	</reporting>	
+	</reporting>
 
 	<repositories>
 		<repository>
@@ -579,8 +594,13 @@
 			<name>Maven Repository Switchboard</name>
 			<url>http://repo1.maven.org/maven2/</url>
 		</repository>
+		<repository>
+			<id>mvnrepository</id>
+			<name>mvnrepository</name>
+			<url>http://www.mvnrepository.com</url>
+		</repository>
 	</repositories>
-	
+
 	<pluginRepositories>
 		<pluginRepository>
 			<id>sonatype_releases</id>
@@ -601,7 +621,7 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-		</pluginRepository>		
+		</pluginRepository>
 		<pluginRepository>
 			<id>fornax</id>
 			<url>http://www.fornax-platform.org/m2/repository</url>
@@ -621,9 +641,14 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-		</pluginRepository>		
+		</pluginRepository>
+		<pluginRepository>
+			<id>mvnrepository</id>
+			<name>mvnrepository</name>
+			<url>http://www.mvnrepository.com</url>
+		</pluginRepository>
 	</pluginRepositories>
-	
+
 	<profiles>
 		<profile>
 			<id>remote-build-snapshot</id>
@@ -632,13 +657,13 @@
 					<name>!localBuild</name>
 				</property>
 			</activation>
-			<repositories>
-				<repository>
-					<id>spray-dependencies</id>
-					<layout>p2</layout>
-					<url>${spray-ci-targetrepository}</url>
-				</repository>
-			</repositories>
+			<!-- <repositories> -->
+			<!-- <repository> -->
+			<!-- <id>spray-dependencies</id> -->
+			<!-- <layout>p2</layout> -->
+			<!-- <url>${spray-ci-targetrepository}</url> -->
+			<!-- </repository> -->
+			<!-- </repositories> -->
 		</profile>
 		<profile>
 			<id>local-build</id>
@@ -649,7 +674,7 @@
 			</activation>
 			<properties>
 				<localBuild>true</localBuild>
-			</properties>			
+			</properties>
 			<repositories>
 				<repository>
 					<id>spray-dependencies</id>
@@ -875,8 +900,10 @@
 			<name>Spray Snapshot Repository</name>
 			<url>dav:https://repository-spray.forge.cloudbees.com/snapshot/</url>
 		</snapshotRepository>
-		<!-- To be able to deploy the site into a "sites" directory under the cloudbees-forge release repo -->
-		<!-- Note: the jspray.cloudbees.site <server> tag has to be setup in your settings.xml -->
+		<!-- To be able to deploy the site into a "sites" directory under the cloudbees-forge 
+			release repo -->
+		<!-- Note: the jspray.cloudbees.site <server> tag has to be setup in your 
+			settings.xml -->
 		<!-- Maven command line: mvn site-deploy -->
 		<site>
 			<id>spray.cloudbees.site</id>
