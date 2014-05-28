@@ -25,6 +25,10 @@ class SprayModelGenerator {
         fsa.generateFile(info.sprayModelDir+"/"+ ProjectProperties::SPRAY_PROPERTY_FILENAME, info.projectName, generateProperties(info))
     }
     
+    def String operator_plus(Object a, String b) {
+		return a.toString.concat(b);
+	}
+    
     def generateModel (SprayProjectInfo info) '''
         /*************************************************************************************
          *

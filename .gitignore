@@ -23,3 +23,7 @@ docs/org.eclipselabs.spray.shapes.doc/docs/
 /tests/org.eclipselabs.spray.generator.graphiti.tests/shapepreviews/
 /releng/org.eclipselabs.spray.distribution/scripts/user.properties
 /examples/ecore/org.eclipselabs.spray.examples.ecore/shapepreviews/
+.project
+.classpath
+.DS_Store
+._trace

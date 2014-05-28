@@ -225,8 +225,8 @@ public class StylesPackageImpl extends EPackageImpl implements StylesPackage
     isInited = true;
 
     // Initialize simple dependencies
-    TypesPackage.eINSTANCE.eClass();
     EcorePackage.eINSTANCE.eClass();
+    TypesPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theStylesPackage.createPackageContents();

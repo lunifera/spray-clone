@@ -11,26 +11,15 @@
 package org.eclipselabs.spray.styles.tests;
 
 import com.google.inject.Inject;
-import org.eclipse.xtext.generator.InMemoryFileSystemAccess;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipselabs.spray.styles.generator.StylesGenerator;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
-import org.xpect.expectation.IStringExpectation;
-import org.xpect.expectation.StringExpectation;
-import org.xpect.parameter.ParameterParser;
-import org.xpect.runner.Xpect;
-import org.xpect.runner.XpectRunner;
-import org.xpect.runner.XpectTestFiles;
-import org.xpect.setup.XpectSetup;
-import org.xpect.xtext.lib.setup.ThisResource;
-import org.xpect.xtext.lib.setup.XtextStandaloneSetup;
-import org.xpect.xtext.lib.util.InMemoryFileSystemAccessFormatter;
 
-@RunWith(XpectRunner.class)
-@XpectSetup(XtextStandaloneSetup.class)
-@XpectTestFiles(relativeTo = XpectTestFiles.FileRoot.PROJECT, baseDir = "model/generator", fileExtensions = "style")
+@RunWith(/* name is null */)/* 
+@XpectSetup(/* name is null */)
+@XpectTestFiles( */
 @Ignore("Not working as there are customization to the output configuration")
 @SuppressWarnings("all")
 public class StyleXpectGeneratorTest {
@@ -38,18 +27,17 @@ public class StyleXpectGeneratorTest {
   @Extension
   private StylesGenerator generator;
   
-  public InMemoryFileSystemAccessFormatter createInMemoryFileSystemAccessFormatter() {
-    return new InMemoryFileSystemAccessFormatter();
+  public /* InMemoryFileSystemAccessFormatter */Object createInMemoryFileSystemAccessFormatter() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nInMemoryFileSystemAccessFormatter cannot be resolved.");
   }
   
-  @Xpect
-  @ParameterParser(syntax = "(\'file\' arg2=TEXT)?")
-  public void generated(@StringExpectation final IStringExpectation expectation, @ThisResource final XtextResource resource, final String arg2) {
-    final InMemoryFileSystemAccess fsa = new InMemoryFileSystemAccess();
-    this.generator.doGenerate(resource, fsa);
-    InMemoryFileSystemAccessFormatter _createInMemoryFileSystemAccessFormatter = this.createInMemoryFileSystemAccessFormatter();
-    InMemoryFileSystemAccessFormatter _includeOnlyFileNamesEndingWith = _createInMemoryFileSystemAccessFormatter.includeOnlyFileNamesEndingWith(arg2);
-    final String files = _includeOnlyFileNamesEndingWith.apply(fsa);
-    expectation.assertEquals(files);
+  /* @Xpect
+  @ParameterParser(
+   */public void generated(/* @StringExpectation  */final /* IStringExpectation */Object expectation, /* @ThisResource  */final XtextResource resource, final String arg2) {
+    throw new Error("Unresolved compilation problems:"
+      + "\nincludeOnlyFileNamesEndingWith cannot be resolved"
+      + "\napply cannot be resolved"
+      + "\nassertEquals cannot be resolved");
   }
 }

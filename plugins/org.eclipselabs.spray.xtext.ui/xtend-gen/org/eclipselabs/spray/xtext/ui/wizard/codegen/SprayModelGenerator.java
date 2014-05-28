@@ -27,35 +27,40 @@ public class SprayModelGenerator {
   
   public void doGenerate(final SprayProjectInfo info, final IFileSystemAccess fsa) {
     String _sprayModelDir = info.getSprayModelDir();
-    String _plus = (_sprayModelDir + "/");
+    String _plus = this.operator_plus(_sprayModelDir, "/");
     String _diagramTypeName = info.getDiagramTypeName();
-    String _plus_1 = (_plus + _diagramTypeName);
-    String _plus_2 = (_plus_1 + ProjectProperties.SPRAY_FILE_EXTENSION);
+    String _plus_1 = this.operator_plus(_plus, _diagramTypeName);
+    String _plus_2 = this.operator_plus(_plus_1, ProjectProperties.SPRAY_FILE_EXTENSION);
     String _projectName = info.getProjectName();
     CharSequence _generateModel = this.generateModel(info);
     fsa.generateFile(_plus_2, _projectName, _generateModel);
     String _sprayModelDir_1 = info.getSprayModelDir();
-    String _plus_3 = (_sprayModelDir_1 + "/");
+    String _plus_3 = this.operator_plus(_sprayModelDir_1, "/");
     String _diagramTypeName_1 = info.getDiagramTypeName();
-    String _plus_4 = (_plus_3 + _diagramTypeName_1);
-    String _plus_5 = (_plus_4 + ProjectProperties.SHAPES_FILE_EXTENSION);
+    String _plus_4 = this.operator_plus(_plus_3, _diagramTypeName_1);
+    String _plus_5 = this.operator_plus(_plus_4, ProjectProperties.SHAPES_FILE_EXTENSION);
     String _projectName_1 = info.getProjectName();
     CharSequence _generateShapes = this.generateShapes(info);
     fsa.generateFile(_plus_5, _projectName_1, _generateShapes);
     String _sprayModelDir_2 = info.getSprayModelDir();
-    String _plus_6 = (_sprayModelDir_2 + "/");
+    String _plus_6 = this.operator_plus(_sprayModelDir_2, "/");
     String _diagramTypeName_2 = info.getDiagramTypeName();
-    String _plus_7 = (_plus_6 + _diagramTypeName_2);
-    String _plus_8 = (_plus_7 + ProjectProperties.STYLES_FILE_EXTENSION);
+    String _plus_7 = this.operator_plus(_plus_6, _diagramTypeName_2);
+    String _plus_8 = this.operator_plus(_plus_7, ProjectProperties.STYLES_FILE_EXTENSION);
     String _projectName_2 = info.getProjectName();
     CharSequence _generateStyles = this.generateStyles(info);
     fsa.generateFile(_plus_8, _projectName_2, _generateStyles);
     String _sprayModelDir_3 = info.getSprayModelDir();
-    String _plus_9 = (_sprayModelDir_3 + "/");
-    String _plus_10 = (_plus_9 + ProjectProperties.SPRAY_PROPERTY_FILENAME);
+    String _plus_9 = this.operator_plus(_sprayModelDir_3, "/");
+    String _plus_10 = this.operator_plus(_plus_9, ProjectProperties.SPRAY_PROPERTY_FILENAME);
     String _projectName_3 = info.getProjectName();
     CharSequence _generateProperties = this.generateProperties(info);
     fsa.generateFile(_plus_10, _projectName_3, _generateProperties);
+  }
+  
+  public String operator_plus(final Object a, final String b) {
+    String _string = a.toString();
+    return _string.concat(b);
   }
   
   public CharSequence generateModel(final SprayProjectInfo info) {

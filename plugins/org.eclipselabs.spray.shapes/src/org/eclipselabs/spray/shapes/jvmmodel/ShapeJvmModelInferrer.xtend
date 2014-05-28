@@ -46,6 +46,10 @@ class ShapeJvmModelInferrer extends AbstractModelInferrer {
 		}
    	}
    	
+   	def String operator_plus(Object a, String b) {
+		return a + b;
+	}
+   	
    	def void infer(ConnectionDefinition element, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
 		val JvmTypeReference superTypeRef = element.calculateSuperTypeRef
 		val typeProvider = typeProviderFactory.createTypeProvider

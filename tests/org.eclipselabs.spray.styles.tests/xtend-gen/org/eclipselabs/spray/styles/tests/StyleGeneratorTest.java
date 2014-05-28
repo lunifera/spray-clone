@@ -32,12 +32,11 @@ import org.eclipselabs.spray.styles.StyleContainerElement;
 import org.eclipselabs.spray.styles.generator.StylesGenerator;
 import org.eclipselabs.spray.styles.tests.util.StyleTestsInjectorProvider;
 import org.eclipselabs.spray.xtext.generator.filesystem.JavaGenFile;
-import org.eclipselabs.xtext.utils.unittesting.XtextRunner2;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner2.class)
+@RunWith(void.class)
 @InjectWith(StyleTestsInjectorProvider.class)
 @SuppressWarnings("all")
 public class StyleGeneratorTest {

@@ -107,9 +107,9 @@ public class SprayJvmModelInferrer extends AbstractModelInferrer {
     EClass _type_5 = clazz.getType();
     EPackage _ePackage = _type_5.getEPackage();
     String _name = _ePackage.getName();
-    String _plus = ("org.eclipselabs.spray." + _name);
-    String _plus_1 = (_plus + ".");
-    String _plus_2 = (_plus_1 + clazzName);
+    String _plus = this.operator_plus("org.eclipselabs.spray.", _name);
+    String _plus_1 = this.operator_plus(_plus, ".");
+    String _plus_2 = this.operator_plus(_plus_1, clazzName);
     QualifiedName _qualifiedName = this.converter.toQualifiedName(_plus_2);
     JvmGenericType _class = this._jvmTypesBuilder.toClass(clazz, _qualifiedName);
     IJvmDeclaredTypeAcceptor.IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
@@ -124,6 +124,11 @@ public class SprayJvmModelInferrer extends AbstractModelInferrer {
       }
     };
     _accept.initializeLater(_function);
+  }
+  
+  public String operator_plus(final Object a, final String b) {
+    String _string = a.toString();
+    return _string.concat(b);
   }
   
   public void infer(final EObject clazz, final IJvmDeclaredTypeAcceptor acceptor, final boolean prelinkingPhase) {

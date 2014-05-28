@@ -30,16 +30,14 @@ import org.eclipselabs.spray.shapes.ShapeContainer;
 import org.eclipselabs.spray.shapes.ShapeContainerElement;
 import org.eclipselabs.spray.shapes.generator.svg.LayoutExtensions;
 import org.eclipselabs.spray.shapes.tests.util.ShapeTestsInjectorProvider;
-import org.eclipselabs.xtext.utils.unittesting.XtextRunner2;
-import org.eclipselabs.xtext.utils.unittesting.XtextTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner2.class)
+@RunWith(void.class)
 @InjectWith(ShapeTestsInjectorProvider.class)
 @SuppressWarnings("all")
-public class LayoutExtensionsTest extends XtextTest {
+public class LayoutExtensionsTest /* implements XtextTest  */{
   @Inject
   private LayoutExtensions layoutExtensions;
   

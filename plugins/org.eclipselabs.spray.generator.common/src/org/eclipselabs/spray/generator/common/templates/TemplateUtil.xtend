@@ -9,7 +9,7 @@
  *     Spray Dev Team - initial API and implementation
  **************************************************************************** */
 package org.eclipselabs.spray.generator.common.templates
-
+ 
 
 import static org.eclipselabs.spray.generator.common.GeneratorUtil.*
 import org.eclipse.emf.ecore.EReference

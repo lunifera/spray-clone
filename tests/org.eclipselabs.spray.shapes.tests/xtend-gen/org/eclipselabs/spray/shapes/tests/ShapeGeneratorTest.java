@@ -29,12 +29,11 @@ import org.eclipselabs.spray.shapes.ShapeDefinition;
 import org.eclipselabs.spray.shapes.generator.ShapeGenerator;
 import org.eclipselabs.spray.shapes.tests.util.ShapeTestsInjectorProvider;
 import org.eclipselabs.spray.xtext.generator.filesystem.JavaGenFile;
-import org.eclipselabs.xtext.utils.unittesting.XtextRunner2;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner2.class)
+@RunWith(void.class)
 @InjectWith(ShapeTestsInjectorProvider.class)
 @SuppressWarnings("all")
 public class ShapeGeneratorTest {

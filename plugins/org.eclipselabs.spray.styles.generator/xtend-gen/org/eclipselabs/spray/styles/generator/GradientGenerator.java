@@ -23,6 +23,7 @@ import org.eclipselabs.spray.styles.Gradient;
 import org.eclipselabs.spray.styles.GradientColorArea;
 import org.eclipselabs.spray.styles.GradientLayout;
 import org.eclipselabs.spray.styles.RGBColor;
+import org.eclipselabs.spray.styles.generator.util.GradientUtilClass;
 import org.eclipselabs.spray.xtext.generator.FileGenerator;
 import org.eclipselabs.spray.xtext.generator.filesystem.GenFile;
 import org.eclipselabs.spray.xtext.generator.filesystem.JavaGenFile;
@@ -79,14 +80,24 @@ public class GradientGenerator extends FileGenerator<Gradient> {
   
   public CharSequence mainExtensionPointFile(final Gradient gradient) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\ufffd\ufffdextensionHeader(this)\ufffd\ufffd");
-    _builder.newLine();
-    _builder.append("package \ufffd\ufffdgradient.packageName\ufffd\ufffd;");
-    _builder.newLine();
+    CharSequence _extensionHeader = this.extensionHeader(this);
+    _builder.append(_extensionHeader, "");
+    _builder.newLineIfNotEmpty();
+    _builder.append("package ");
+    String _packageName = this.packageName(gradient);
+    _builder.append(_packageName, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     _builder.append(" ");
     _builder.newLine();
-    _builder.append("public class \ufffd\ufffdgradient.gapClassName\ufffd\ufffd extends \ufffd\ufffdgradient.className\ufffd\ufffd {");
-    _builder.newLine();
+    _builder.append("public class ");
+    String _gapClassName = this.gapClassName(gradient);
+    _builder.append(_gapClassName, "");
+    _builder.append(" extends ");
+    String _className = this.className(gradient);
+    _builder.append(_className, "");
+    _builder.append(" {");
+    _builder.newLineIfNotEmpty();
     _builder.append(" ");
     _builder.newLine();
     _builder.append("}");
@@ -96,11 +107,13 @@ public class GradientGenerator extends FileGenerator<Gradient> {
   
   private CharSequence compile(final Gradient g) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\ufffd\ufffdg.head\ufffd\ufffd");
+    CharSequence _head = this.head(g);
+    _builder.append(_head, "");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.newLine();
-    _builder.append("\ufffd\ufffdg.body\ufffd\ufffd");
-    _builder.newLine();
+    CharSequence _body = this.body(g);
+    _builder.append(_body, "");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
@@ -114,8 +127,11 @@ public class GradientGenerator extends FileGenerator<Gradient> {
     _builder.append(" ");
     _builder.append("*/");
     _builder.newLine();
-    _builder.append("package \ufffd\ufffdg.packageName\ufffd\ufffd;");
-    _builder.newLine();
+    _builder.append("package ");
+    String _packageName = this.packageName(g);
+    _builder.append(_packageName, "");
+    _builder.append(";");
+    _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("import org.eclipse.emf.common.util.EList;");
     _builder.newLine();
@@ -143,15 +159,20 @@ public class GradientGenerator extends FileGenerator<Gradient> {
     _builder.append("/**");
     _builder.newLine();
     _builder.append(" ");
-    _builder.append("* Description: \ufffd\ufffdg.description\ufffd\ufffd");
-    _builder.newLine();
+    _builder.append("* Description: ");
+    String _description = g.getDescription();
+    _builder.append(_description, " ");
+    _builder.newLineIfNotEmpty();
     _builder.append(" ");
     _builder.append("*/");
     _builder.newLine();
     _builder.append("@SuppressWarnings(\"all\")");
     _builder.newLine();
-    _builder.append("public class \ufffd\ufffdg.className\ufffd\ufffd extends PredefinedColoredAreas implements ISprayGradient {");
-    _builder.newLine();
+    _builder.append("public class ");
+    String _className = this.className(g);
+    _builder.append(_className, "");
+    _builder.append(" extends PredefinedColoredAreas implements ISprayGradient {");
+    _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.newLine();
     _builder.append("    ");
@@ -161,8 +182,10 @@ public class GradientGenerator extends FileGenerator<Gradient> {
     _builder.append("* This method returns the gradient color area.");
     _builder.newLine();
     _builder.append("     ");
-    _builder.append("* Description: \ufffd\ufffdg.description\ufffd\ufffd");
-    _builder.newLine();
+    _builder.append("* Description: ");
+    String _description_1 = g.getDescription();
+    _builder.append(_description_1, "     ");
+    _builder.newLineIfNotEmpty();
     _builder.append("     ");
     _builder.append("*/");
     _builder.newLine();
@@ -176,8 +199,10 @@ public class GradientGenerator extends FileGenerator<Gradient> {
     _builder.append("final EList<org.eclipse.graphiti.mm.algorithms.styles.GradientColoredArea> gcas = gradientColoredAreas.getGradientColor();");
     _builder.newLine();
     _builder.append("         ");
-    _builder.append("\ufffd\ufffdg.layout.createColorAreas\ufffd\ufffd");
-    _builder.newLine();
+    GradientLayout _layout = g.getLayout();
+    CharSequence _createColorAreas = this.createColorAreas(_layout);
+    _builder.append(_createColorAreas, "         ");
+    _builder.newLineIfNotEmpty();
     _builder.append("         ");
     _builder.append("return gradientColoredAreas;");
     _builder.newLine();
@@ -202,25 +227,32 @@ public class GradientGenerator extends FileGenerator<Gradient> {
       IterableExtensions.<GradientColorArea, Double>sortBy(_area, _function);
       this.elementIndex = (-1);
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("\ufffd\ufffdFOR element : l.area\ufffd\ufffd");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("\ufffd\ufffdIF(increaseCounter < l.area.size - 1)\ufffd\ufffd");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("\ufffd\ufffdcreateArea(element,l.area.get(elementIndex+1))\ufffd\ufffd");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("\ufffd\ufffdELSEIF(l.area.size == 1)\ufffd\ufffd");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.append("\ufffd\ufffdENDIF\ufffd\ufffd");
-      _builder.newLine();
-      _builder.append("      \t");
-      _builder.append("\ufffd\ufffdENDFOR\ufffd\ufffd");
-      _builder.newLine();
+      {
+        EList<GradientColorArea> _area_1 = l.getArea();
+        for(final GradientColorArea element : _area_1) {
+          {
+            int _increaseCounter = this.increaseCounter();
+            EList<GradientColorArea> _area_2 = l.getArea();
+            int _size = _area_2.size();
+            int _minus = (_size - 1);
+            boolean _lessThan = (_increaseCounter < _minus);
+            if (_lessThan) {
+              EList<GradientColorArea> _area_3 = l.getArea();
+              GradientColorArea _get = _area_3.get((this.elementIndex + 1));
+              CharSequence _createArea = this.createArea(element, _get);
+              _builder.append(_createArea, "");
+              _builder.newLineIfNotEmpty();
+            } else {
+              EList<GradientColorArea> _area_4 = l.getArea();
+              int _size_1 = _area_4.size();
+              boolean _equals = (_size_1 == 1);
+              if (_equals) {
+                _builder.newLine();
+              }
+            }
+          }
+        }
+      }
       _xblockexpression = _builder;
     }
     return _xblockexpression;
@@ -236,7 +268,19 @@ public class GradientGenerator extends FileGenerator<Gradient> {
       double _multiply_1 = (_offset_1 * 100);
       int offset_2 = Double.valueOf(_multiply_1).intValue();
       StringConcatenation _builder = new StringConcatenation();
-      _builder.append("addGradientColoredArea(gcas,\"\ufffd\ufffdfirst.color.createColorValue\ufffd\ufffd\",\ufffd\ufffdoffset_1\ufffd\ufffd,org.eclipse.graphiti.mm.algorithms.styles.LocationType.LOCATION_TYPE_RELATIVE, \"\ufffd\ufffdsecond.color.createColorValue\ufffd\ufffd\",\ufffd\ufffdoffset_2\ufffd\ufffd,org.eclipse.graphiti.mm.algorithms.styles.LocationType.LOCATION_TYPE_RELATIVE);");
+      _builder.append("addGradientColoredArea(gcas,\"");
+      Color _color = first.getColor();
+      CharSequence _createColorValue = this.createColorValue(_color);
+      _builder.append(_createColorValue, "");
+      _builder.append("\",");
+      _builder.append(offset_1, "");
+      _builder.append(",org.eclipse.graphiti.mm.algorithms.styles.LocationType.LOCATION_TYPE_RELATIVE, \"");
+      Color _color_1 = second.getColor();
+      CharSequence _createColorValue_1 = this.createColorValue(_color_1);
+      _builder.append(_createColorValue_1, "");
+      _builder.append("\",");
+      _builder.append(offset_2, "");
+      _builder.append(",org.eclipse.graphiti.mm.algorithms.styles.LocationType.LOCATION_TYPE_RELATIVE);");
       _xblockexpression = _builder;
     }
     return _xblockexpression;
@@ -244,13 +288,15 @@ public class GradientGenerator extends FileGenerator<Gradient> {
   
   protected CharSequence _createColorValue(final ColorConstantRef c) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\ufffd\ufffdGradientUtilClass::colorConstantToHexString(c)\ufffd\ufffd");
+    String _colorConstantToHexString = GradientUtilClass.colorConstantToHexString(c);
+    _builder.append(_colorConstantToHexString, "");
     return _builder;
   }
   
   protected CharSequence _createColorValue(final RGBColor c) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\ufffd\ufffdGradientUtilClass::RGBColorToHexString(c)\ufffd\ufffd");
+    String _RGBColorToHexString = GradientUtilClass.RGBColorToHexString(c);
+    _builder.append(_RGBColorToHexString, "");
     return _builder;
   }
   

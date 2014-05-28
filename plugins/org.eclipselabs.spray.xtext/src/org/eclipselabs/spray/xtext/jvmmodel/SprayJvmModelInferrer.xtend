@@ -52,6 +52,10 @@ class SprayJvmModelInferrer extends AbstractModelInferrer {
                 members += toGetter("ecoreClass", eClassJvmType)
             ]
     }
+    
+    def String operator_plus(Object a, String b) {
+		return a.toString.concat(b);
+	}
 
 }
 

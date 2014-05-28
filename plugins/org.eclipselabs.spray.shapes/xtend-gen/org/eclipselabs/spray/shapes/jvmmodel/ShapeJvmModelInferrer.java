@@ -52,16 +52,16 @@ public class ShapeJvmModelInferrer extends AbstractModelInferrer {
     final JvmTypeReference superTypeRef = this.calculateSuperTypeRef(element);
     final IJvmTypeProvider typeProvider = this.typeProviderFactory.createTypeProvider();
     String _packageName = this.getPackageName(element);
-    String _plus = (_packageName + ".");
+    String _plus = this.operator_plus(_packageName, ".");
     String _className = this.getClassName(element);
-    String _plus_1 = (_plus + _className);
+    String _plus_1 = this.operator_plus(_plus, _className);
     JvmType existingClass = typeProvider.findTypeByName(_plus_1);
     boolean _equals = Objects.equal(existingClass, null);
     if (_equals) {
       String _packageName_1 = this.getPackageName(element);
-      String _plus_2 = (_packageName_1 + ".");
+      String _plus_2 = this.operator_plus(_packageName_1, ".");
       String _className_1 = this.getClassName(element);
-      String _plus_3 = (_plus_2 + _className_1);
+      String _plus_3 = this.operator_plus(_plus_2, _className_1);
       JvmGenericType _class = this._jvmTypesBuilder.toClass(element, _plus_3);
       IJvmDeclaredTypeAcceptor.IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {
@@ -83,20 +83,24 @@ public class ShapeJvmModelInferrer extends AbstractModelInferrer {
     }
   }
   
+  public String operator_plus(final Object a, final String b) {
+    return this.operator_plus(a, b);
+  }
+  
   public void infer(final ConnectionDefinition element, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
     final JvmTypeReference superTypeRef = this.calculateSuperTypeRef(element);
     final IJvmTypeProvider typeProvider = this.typeProviderFactory.createTypeProvider();
     String _packageName = this.getPackageName(element);
-    String _plus = (_packageName + ".");
+    String _plus = this.operator_plus(_packageName, ".");
     String _className = this.getClassName(element);
-    String _plus_1 = (_plus + _className);
+    String _plus_1 = this.operator_plus(_plus, _className);
     JvmType existingClass = typeProvider.findTypeByName(_plus_1);
     boolean _equals = Objects.equal(existingClass, null);
     if (_equals) {
       String _packageName_1 = this.getPackageName(element);
-      String _plus_2 = (_packageName_1 + ".");
+      String _plus_2 = this.operator_plus(_packageName_1, ".");
       String _className_1 = this.getClassName(element);
-      String _plus_3 = (_plus_2 + _className_1);
+      String _plus_3 = this.operator_plus(_plus_2, _className_1);
       JvmGenericType _class = this._jvmTypesBuilder.toClass(element, _plus_3);
       IJvmDeclaredTypeAcceptor.IPostIndexingInitializing<JvmGenericType> _accept = acceptor.<JvmGenericType>accept(_class);
       final Procedure1<JvmGenericType> _function = new Procedure1<JvmGenericType>() {

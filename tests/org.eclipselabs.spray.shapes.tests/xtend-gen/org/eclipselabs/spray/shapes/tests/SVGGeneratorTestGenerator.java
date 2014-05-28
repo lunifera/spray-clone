@@ -12,27 +12,21 @@ package org.eclipselabs.spray.shapes.tests;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
-import org.eclipselabs.spray.shapes.ShapeContainer;
 import org.eclipselabs.spray.shapes.ShapeContainerElement;
 import org.eclipselabs.spray.shapes.tests.util.ShapeTestsInjectorProvider;
-import org.eclipselabs.xtext.utils.unittesting.XtextRunner2;
-import org.eclipselabs.xtext.utils.unittesting.XtextTest;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner2.class)
+@RunWith(void.class)
 @InjectWith(ShapeTestsInjectorProvider.class)
 @SuppressWarnings("all")
-public class SVGGeneratorTestGenerator extends XtextTest {
+public class SVGGeneratorTestGenerator /* implements XtextTest  */{
   @Ignore
   @Test
   public void generate() {
@@ -178,16 +172,16 @@ public class SVGGeneratorTestGenerator extends XtextTest {
   }
   
   private ArrayList<CharSequence> generateTests(final String pathSegment, final String shapeFileName) {
-    ArrayList<CharSequence> _xblockexpression = null;
-    {
-      final URI uri = URI.createURI((((((this.resourceRoot + "/testcases/svgs/") + pathSegment) + "/") + shapeFileName) + ".shape"));
-      Class<? extends EObject> _rootObjectType = this.getRootObjectType(uri);
-      EObject _loadModel = this.loadModel(this.resourceSet, uri, _rootObjectType);
-      final ShapeContainer shapeContainer = ((ShapeContainer) _loadModel);
-      EList<ShapeContainerElement> _shapeContainerElement = shapeContainer.getShapeContainerElement();
-      _xblockexpression = this.generateTestMethods(pathSegment, shapeFileName, _shapeContainerElement);
-    }
-    return _xblockexpression;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field resourceRoot is undefined for the type SVGGeneratorTestGenerator"
+      + "\nThe method loadModel is undefined for the type SVGGeneratorTestGenerator"
+      + "\nThe method or field resourceSet is undefined for the type SVGGeneratorTestGenerator"
+      + "\nThe method getRootObjectType is undefined for the type SVGGeneratorTestGenerator"
+      + "\n+ cannot be resolved"
+      + "\n+ cannot be resolved"
+      + "\n+ cannot be resolved"
+      + "\n+ cannot be resolved"
+      + "\n+ cannot be resolved");
   }
   
   private ArrayList<CharSequence> generateTestMethods(final String pathSegment, final String shapeFileName, final Iterable<? extends ShapeContainerElement> elements) {

@@ -25,11 +25,8 @@ import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.eclipselabs.spray.generator.graphiti.tests.AbstractSprayGeneratorTest;
 import org.eclipselabs.spray.generator.graphiti.tests.InMemoryFilesystemAccessExt;
 import org.eclipselabs.spray.generator.graphiti.tests.SprayTestsInjectorProvider;
-import org.eclipselabs.xtext.utils.unittesting.XtextRunner2;
-import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner2.class)
-@InjectWith(SprayTestsInjectorProvider.class)
+/* @RunWith(XtextRunner2.class) */@InjectWith(SprayTestsInjectorProvider.class)
 @SuppressWarnings("all")
 public class Mod4JTestGenerator extends AbstractSprayGeneratorTest {
   private final String PREFIX = "DEFAULT_OUTPUT";

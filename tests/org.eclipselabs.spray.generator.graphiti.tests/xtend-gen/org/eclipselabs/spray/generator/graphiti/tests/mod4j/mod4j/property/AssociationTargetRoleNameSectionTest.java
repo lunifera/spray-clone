@@ -1,33 +1,18 @@
 package org.eclipselabs.spray.generator.graphiti.tests.mod4j.mod4j.property;
 
-import java.util.Map;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipselabs.spray.generator.graphiti.tests.AbstractSprayGeneratorTest;
-import org.eclipselabs.spray.generator.graphiti.tests.InMemoryFilesystemAccessExt;
 import org.eclipselabs.spray.generator.graphiti.tests.SprayTestsInjectorProvider;
-import org.eclipselabs.xtext.utils.unittesting.XtextRunner2;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner2.class)
-@InjectWith(SprayTestsInjectorProvider.class)
+/* @RunWith(XtextRunner2.class) */@InjectWith(SprayTestsInjectorProvider.class)
 @SuppressWarnings("all")
 public class AssociationTargetRoleNameSectionTest extends AbstractSprayGeneratorTest {
-  @Test
-  public void test() {
-    final InMemoryFilesystemAccessExt fsa = this.triggerGenerator("mod4j/mod4j-busmod.spray");
-    final String keyClass = "DEFAULT_OUTPUTorg/eclipselabs/spray/examples/mod4j/property/AssociationTargetRoleNameSection.java";
-    Map<String,CharSequence> _files = fsa.getFiles();
-    boolean _containsKey = _files.containsKey(keyClass);
-    Assert.assertTrue((keyClass + " should have been generated"), _containsKey);
-    Map<String,CharSequence> _files_1 = fsa.getFiles();
-    CharSequence _get = _files_1.get(keyClass);
-    String _string = _get.toString();
-    CharSequence _expectedContent = this.expectedContent();
-    String _string_1 = _expectedContent.toString();
-    Assert.assertEquals((keyClass + " should have the expected content"), _string, _string_1);
+  /* @Test
+   */public void test() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method assertTrue is undefined for the type AssociationTargetRoleNameSectionTest"
+      + "\nThe method assertEquals is undefined for the type AssociationTargetRoleNameSectionTest");
   }
   
   private CharSequence expectedContent() {

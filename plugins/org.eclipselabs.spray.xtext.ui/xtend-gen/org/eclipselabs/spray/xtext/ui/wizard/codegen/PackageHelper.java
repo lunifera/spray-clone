@@ -33,7 +33,8 @@ public class PackageHelper {
       resource.load(Collections.EMPTY_MAP);
       final int index = element.lastIndexOf(".");
       boolean _and = false;
-      if (!(index > 0)) {
+      boolean _greaterThan = (index > 0);
+      if (!_greaterThan) {
         _and = false;
       } else {
         int _length = element.length();
@@ -41,7 +42,8 @@ public class PackageHelper {
         _and = _lessThan;
       }
       if (_and) {
-        final String className = element.substring((index + 1));
+        int _plus = (index + 1);
+        final String className = element.substring(_plus);
         EPackage ePackage = null;
         TreeIterator<EObject> _allContents = resource.getAllContents();
         Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);

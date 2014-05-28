@@ -10,19 +10,13 @@
  */
 package org.eclipselabs.spray.generator.graphiti.tests;
 
-import com.google.common.base.Objects;
 import javax.inject.Inject;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipselabs.spray.generator.graphiti.SprayGenerator;
 import org.eclipselabs.spray.generator.graphiti.tests.InMemoryFilesystemAccessExt;
-import org.eclipselabs.xtext.utils.unittesting.XtextTest;
-import org.junit.Ignore;
 
-@Ignore
-@SuppressWarnings("all")
-public abstract class AbstractSprayGeneratorTest extends XtextTest {
+/* @Ignore
+ */@SuppressWarnings("all")
+public abstract class AbstractSprayGeneratorTest /* implements XtextTest  */{
   @Inject
   private SprayGenerator sprayGenerator;
   
@@ -32,19 +26,10 @@ public abstract class AbstractSprayGeneratorTest extends XtextTest {
   private static InMemoryFilesystemAccessExt filledFsa = null;
   
   public InMemoryFilesystemAccessExt triggerGenerator(final String path) {
-    InMemoryFilesystemAccessExt _xblockexpression = null;
-    {
-      boolean _equals = Objects.equal(AbstractSprayGeneratorTest.filledFsa, null);
-      if (_equals) {
-        AbstractSprayGeneratorTest.filledFsa = this.fsa;
-        final URI uri = URI.createURI(("model/" + path));
-        Class<? extends EObject> _rootObjectType = this.getRootObjectType(uri);
-        final EObject model = this.loadModel(this.resourceSet, uri, _rootObjectType);
-        Resource _eResource = model.eResource();
-        this.sprayGenerator.doGenerate(_eResource, AbstractSprayGeneratorTest.filledFsa);
-      }
-      _xblockexpression = AbstractSprayGeneratorTest.filledFsa;
-    }
-    return _xblockexpression;
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method loadModel is undefined for the type AbstractSprayGeneratorTest"
+      + "\nThe method or field resourceSet is undefined for the type AbstractSprayGeneratorTest"
+      + "\nThe method getRootObjectType is undefined for the type AbstractSprayGeneratorTest"
+      + "\neResource cannot be resolved");
   }
 }

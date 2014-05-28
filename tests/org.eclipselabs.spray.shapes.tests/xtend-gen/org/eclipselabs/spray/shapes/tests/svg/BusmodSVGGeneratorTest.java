@@ -14,8 +14,6 @@ import java.io.File;
 import java.util.Scanner;
 import javax.inject.Inject;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
@@ -26,16 +24,14 @@ import org.eclipselabs.spray.shapes.ShapeContainerElement;
 import org.eclipselabs.spray.shapes.generator.GeneratorSVGDefinition;
 import org.eclipselabs.spray.shapes.tests.svg.CustomAssert;
 import org.eclipselabs.spray.shapes.tests.util.ShapeTestsInjectorProvider;
-import org.eclipselabs.xtext.utils.unittesting.XtextRunner2;
-import org.eclipselabs.xtext.utils.unittesting.XtextTest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner2.class)
+@RunWith(void.class)
 @InjectWith(ShapeTestsInjectorProvider.class)
 @SuppressWarnings("all")
-public class BusmodSVGGeneratorTest extends XtextTest {
+public class BusmodSVGGeneratorTest /* implements XtextTest  */{
   private ShapeContainer shapeContainer;
   
   @Inject
@@ -47,10 +43,12 @@ public class BusmodSVGGeneratorTest extends XtextTest {
   
   @Before
   public void setUp() {
-    final URI uri = URI.createURI((this.resourceRoot + "/testcases/svgs/busmod/mydiagram.shape"));
-    Class<? extends EObject> _rootObjectType = this.getRootObjectType(uri);
-    EObject _loadModel = this.loadModel(this.resourceSet, uri, _rootObjectType);
-    this.shapeContainer = ((ShapeContainer) _loadModel);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method or field resourceRoot is undefined for the type BusmodSVGGeneratorTest"
+      + "\nThe method loadModel is undefined for the type BusmodSVGGeneratorTest"
+      + "\nThe method or field resourceSet is undefined for the type BusmodSVGGeneratorTest"
+      + "\nThe method getRootObjectType is undefined for the type BusmodSVGGeneratorTest"
+      + "\n+ cannot be resolved");
   }
   
   @Test

@@ -11,44 +11,26 @@
 package org.eclipselabs.spray.generator.graphiti.util.mm;
 
 import javax.inject.Inject;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipselabs.spray.generator.graphiti.tests.SprayTestsInjectorProvider;
 import org.eclipselabs.spray.generator.graphiti.util.mm.MetaReferenceExtensions;
-import org.eclipselabs.spray.mm.spray.Diagram;
-import org.eclipselabs.spray.mm.spray.MetaClass;
-import org.eclipselabs.spray.mm.spray.MetaReference;
-import org.eclipselabs.spray.mm.spray.SprayFactory;
-import org.eclipselabs.xtext.utils.unittesting.XtextRunner2;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(XtextRunner2.class)
-@InjectWith(SprayTestsInjectorProvider.class)
+/* @RunWith(XtextRunner2.class) */@InjectWith(SprayTestsInjectorProvider.class)
 @SuppressWarnings("all")
 public class MetaReferenceExtensionsTest {
   @Inject
   private MetaReferenceExtensions sut;
   
-  @Test
-  public void testGetDiagram() {
-    final Diagram diagram = SprayFactory.eINSTANCE.createDiagram();
-    final MetaClass metaClass = SprayFactory.eINSTANCE.createMetaClass();
-    final MetaReference reference = SprayFactory.eINSTANCE.createMetaReference();
-    EList<MetaReference> _references = metaClass.getReferences();
-    _references.add(reference);
-    EList<MetaClass> _metaClasses = diagram.getMetaClasses();
-    _metaClasses.add(metaClass);
-    final Diagram foundDiagram = this.sut.getDiagram(reference);
-    Assert.assertNotNull("found diagram", foundDiagram);
-    Assert.assertEquals("found expected diagram", foundDiagram, diagram);
+  /* @Test
+   */public Object testGetDiagram() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method assertNotNull is undefined for the type MetaReferenceExtensionsTest"
+      + "\nThe method assertEquals is undefined for the type MetaReferenceExtensionsTest");
   }
   
-  @Test
-  public void testGetDiagram_WhenReferenceHasNoDiagramInHierarchy__ExpectNoDiagram() {
-    final MetaReference reference = SprayFactory.eINSTANCE.createMetaReference();
-    final Diagram foundDiagram = this.sut.getDiagram(reference);
-    Assert.assertNull("found no diagram", foundDiagram);
+  /* @Test
+   */public Object testGetDiagram_WhenReferenceHasNoDiagramInHierarchy__ExpectNoDiagram() {
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe method assertNull is undefined for the type MetaReferenceExtensionsTest");
   }
 }

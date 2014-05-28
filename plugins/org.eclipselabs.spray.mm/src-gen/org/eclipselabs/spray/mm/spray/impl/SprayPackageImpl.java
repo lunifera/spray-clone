@@ -255,8 +255,8 @@ public class SprayPackageImpl extends EPackageImpl implements SprayPackage
     isInited = true;
 
     // Initialize simple dependencies
-    XbasePackage.eINSTANCE.eClass();
     ShapesPackage.eINSTANCE.eClass();
+    XbasePackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theSprayPackage.createPackageContents();
